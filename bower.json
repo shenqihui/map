@@ -22,6 +22,7 @@
   "dependencies": {
     "angular": "~1.4.7",
     "bootstrap": "~3.3.5",
-    "jquery-jvectormap-2.0.3": "http://jvectormap.com/binary/jquery-jvectormap-2.0.3.zip"
+    "jquery-jvectormap-2.0.3": "http://jvectormap.com/binary/jquery-jvectormap-2.0.3.zip",
+    "ace": "~1.2.2"
   }
 }

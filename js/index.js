@@ -17,6 +17,12 @@
         rangeArr.push(mapData[i]);
       }
     }
+    // 处理特殊数据。
+    // CN-35 福建省的数据
+    if(mapData['CN-35']) {
+      mapData['CN-'] = mapData['CN-35'];
+    }
+    // 处理特殊数据 end 。
     $map.empty();
     if ($map.length > 0) {
       $map.vectorMap({

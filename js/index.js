@@ -5,13 +5,13 @@ var example = {
   },
   China: {"map": {"CN-34": 586, "CN-53": 1255, "CN-50": 2090, "CN-51": 1505, "CN-31": 1176, "CN-54": 95, "CN-33": 3929, "CN-14": 1688, "CN-15": 1451, "CN-12": 396, "CN-13": 2575, "CN-11": 3921, "CN-52": 958, "CN-35": 4167, "CN-36": 927, "CN-37": 3818, "CN-44": 8536, "CN-41": 1184, "CN-43": 2367, "CN-42": 702, "CN-45": 1142, "CN-32": 3958, "CN-46": 110, "CN-65": 258, "CN-64": 96, "CN-63": 305, "CN-62": 355, "CN-61": 1552, "CN-23": 1095, "CN-22": 1834, "CN-21": 3821 }}
 };
-function buildMap(jsonData, mapType) {
+function buildMap(jsonData, mapType, option) {
   // build the world map
   // sort the data to map stat
   var $map = $('[data-chart=map]'),
     config = $map.data(),
-    scaleBegin = '#ffffff',
-    scaleEnd = '#e16769',
+    scaleBegin = option.scaleBegin || '#ffffff',
+    scaleEnd = option.scaleEnd || '#e16769',
     scale = [scaleBegin, scaleEnd],
     mapData = jsonData.map,
     rangeArr = [];
@@ -30,7 +30,7 @@ function buildMap(jsonData, mapType) {
   if ($map.length > 0) {
     $map.vectorMap({
       map: mapType || 'world_mill',
-      backgroundColor: '#131313',
+      backgroundColor: option.backgroundColor || '#131313',
       onRegionTipShow: function (e, el, code) {
         return el.html(el.html() + ' (' + (jsonData.map[code] || 0) + ')');
       },
@@ -54,7 +54,7 @@ function buildMap(jsonData, mapType) {
   }
 }
 
-function buildMapFormat(mapDataStr, mapType) {
+function buildMapFormat(mapDataStr, mapType, option) {
   var mapData = {};
   try{
     mapData = JSON.parse(mapDataStr);
@@ -64,7 +64,7 @@ function buildMapFormat(mapDataStr, mapType) {
     mapData = example.World;
   }
 
-  buildMap(mapData, mapType);
+  buildMap(mapData, mapType, option);
 }
 
 
@@ -82,10 +82,15 @@ app.controller('map', function($scope, $http, angularLoad) {
     $scope.map.width = 600;
   }
   $scope.map.height = $scope.map.width * 9 / 16;
-
+  $scope.map.scaleBegin = '#ffffff';
+  $scope.map.scaleEnd = '#e16769';
+  $scope.map.backgroundColor = '#131313';
 
   $scope.$on('BuildMapEvent', function(event, option) {
-    buildMapFormat(option.mapData, option.area);
+    option.scaleBegin = $scope.map.scaleBegin;
+    option.scaleEnd = $scope.map.scaleEnd;
+    option.backgroundColor = $scope.backgroundColor;
+    buildMapFormat(option.mapData, option.area, option);
   });
 
   $scope.$on('MapJsLoadEvent', function(event, option) {

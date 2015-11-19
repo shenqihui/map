@@ -47,6 +47,21 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <div class="form-group">
+            <label for="map-width">地图背景颜色：</label>
+            <input class="form-control" name="map-backgroundColor" id="map-backgroundColor" ng-model="map.backgroundColor"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <label for="map-width">地图渲染开始颜色：</label>
+            <input class="form-control" name="map-scaleBegin" id="map-scaleBegin" ng-model="map.scaleBegin"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <label for="map-width">地图渲染结束颜色：</label>
+            <input class="form-control" name="map-scaleEnd" id="map-scaleEnd" ng-model="map.scaleEnd"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
             <label for="map-width">地图宽度：</label>
             <div class="input-group">
               <input class="form-control" name="map-width" id="map-width" ng-model="map.width" ng-change="getAreaJs()"/>
@@ -103,7 +118,7 @@
             <i class="fa fa-spinner"></i>&nbsp;增强配置项
             <ol>
               <li><i class="fa fa-check-square-o"></i>宽度高度</li>
-              <li><i class="fa fa-square-o"></i>渲染颜色</li>
+              <li><i class="fa fa-check-square-o"></i>渲染颜色</li>
               <li><i class="fa fa-square-o"></i>推荐渲染颜色</li>
             </ol>
           </li>

@@ -138,7 +138,7 @@ app.controller('map', function($scope, $http, angularLoad) {
     });
   };
 
-  $http.get('js/map_tree.json').success(function(data) {
+  $http.get('data/map_tree.json').success(function(data) {
     $scope.mapTree = data;
     window.mapTree = $scope.mapTree;
 

@@ -90,7 +90,7 @@ app.controller('map', function($scope, $http, angularLoad) {
 
   $scope.$on('MapJsLoadEvent', function(event, option) {
     var areaObj = $scope.mapTree[option.areaType][option.area];
-    var href = areaObj[option.mapType];
+    var href = areaObj[option.mapType].replace('http://jvectormap.com/js/', 'map_vender/');
     var cb = function() {
       if(option && option.success && option.success.call) {
         option.success.call(this);
@@ -160,4 +160,14 @@ app.controller('map', function($scope, $http, angularLoad) {
   });
   $scope.mapData = JSON.stringify(example.World);
 
+  window.testMapFile = function() {
+    for(var type in $scope.mapTree) {
+      if($scope.mapTree.hasOwnProperty(type)) {
+        for(var area in $scope.mapTree[type]) {
+          $.getScript($scope.mapTree[type][area].mill.replace('http://jvectormap.com/js/', 'map_vender/'));
+          $.getScript($scope.mapTree[type][area].merc.replace('http://jvectormap.com/js/', 'map_vender/'));
+        }
+      }
+    }
+  };
 });

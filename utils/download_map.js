@@ -19,8 +19,9 @@ function createFolder() {
       });
     } else {
       downloadedFile = data;
-      // console.log(data);
+      console.log(data);
     }
+    mapTreeFunc();
   });
 }
 createFolder();
@@ -63,7 +64,6 @@ function mapTreeFunc() {
   }
   return true;
 }
-mapTreeFunc();
 
 
 queue.awaitAll(function(error, results) { console.log("all done!"); });

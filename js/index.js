@@ -89,7 +89,7 @@ app.controller('map', function($scope, $http, angularLoad) {
   $scope.$on('BuildMapEvent', function(event, option) {
     option.scaleBegin = $scope.map.scaleBegin;
     option.scaleEnd = $scope.map.scaleEnd;
-    option.backgroundColor = $scope.backgroundColor;
+    option.backgroundColor = $scope.map.backgroundColor;
     buildMapFormat(option.mapData, option.area, option);
   });
 

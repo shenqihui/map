@@ -78,6 +78,9 @@ app.controller('map', function($scope, $http, angularLoad) {
 
   $scope.map = {};
   $scope.map.width = $('#map-container').width();
+  if($scope.map.width > 600) {
+    $scope.map.width = 600;
+  }
   $scope.map.height = $scope.map.width * 9 / 16;
 
 
@@ -92,7 +95,7 @@ app.controller('map', function($scope, $http, angularLoad) {
       if(option && option.success && option.success.call) {
         option.success.call(this);
       }
-    }
+    };
     if(!areaObj[option.mapType + 'Load']) {
       angularLoad.loadScript(href).then(function() {
         areaObj[option.mapType + 'Load'] = true;

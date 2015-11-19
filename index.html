@@ -6,52 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="style/github-light.css" media="screen">
     <link rel="stylesheet" href="bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.css">
   </head>
-  <body>
+  <body ng-app="app">
     <section class="page-header">
       <h1 class="project-name">Map</h1>
       <h2 class="project-tagline">很方便的创建 map</h2>
-      <a href="https://github.com/shenqihui/map" class="btn">View on GitHub</a>
-      <a href="https://github.com/shenqihui/map/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/shenqihui/map/tarball/master" class="btn">Download .tar.gz</a>
+      <a href="https://github.com/shenqihui/map" class="btn btn-info">View on GitHub</a>
+      <a href="https://github.com/shenqihui/map/zipball/master" class="btn btn-info">Download .zip</a>
+      <a href="https://github.com/shenqihui/map/tarball/master" class="btn btn-info">Download .tar.gz</a>
     </section>
-    <section class="main-content">
+    <section class="main-content" ng-controller="map">
       <h1>渲染结果</h1>
-      <div data-chart="map" style="height: 600px;width: 100%;"></div>
+      <div data-chart="map" id="map-container" style="margin: 0 auto;height: {{map.height}}px;width: {{map.width}}px"></div>
       <hr>
       <div>
         <h1>配置</h1>
-        <p>
-          <label for="map-select">选择地图：</label>
-          <select name="map-select" id="map-select">
-            <option value="world_mill" selected>world_mill</option>
-            <option value="world_merc">world_merc</option>
-            <option value="cn_mill">cn_mill</option>
-            <option value="cn_merc">cn_merc</option>
-          </select>
-        </p>
-        <p>
-          <label for="map-data">地图数据：</label>
-          <textarea name="map-data" id="map-data" cols="30" rows="10" style="width: 100%;">{"map":{"BD":4,"BE":6292,"BF":1,"BG":105,"BA":23,"BB":7,"BM":10,"BN":7,"BO":5,"JP":503,"BJ":5,"JM":11,"JO":20,"BR":400,"BS":8,"JE":16,"BY":62,"RU":3393,"RW":2,"RS":52,"RE":83,"A2":1,"RO":701,"GU":7,"GT":5,"GR":189,"GP":84,"BH":4,"GG":5,"GF":24,"GE":6,"GD":1,"GB":7439,"GA":2,"SV":5,"GL":6,"GI":7,"GH":2,"OM":6,"TN":4,"HR":71,"HT":1,"HU":1949,"HK":9314,"HN":3,"AD":15,"PR":29,"PT":368,"PY":31,"PA":34,"PF":27,"PE":18,"PK":3,"PH":164,"PL":2512,"PM":3,"EE":247,"EG":2,"ZA":161,"EC":66,"AL":3,"AO":9,"SB":1,"EU":8,"ZW":1,"KY":4,"ES":3728,"ME":3,"MD":29,"MG":4,"MF":5,"UY":5,"MC":35,"UZ":4,"MM":1,"MO":285,"MN":2,"MH":2,"US":15540,"MU":11,"MT":35,"MV":2,"MQ":31,"MP":1,"AU":3357,"UG":1,"TZ":1,"UA":265,"MX":521,"AT":1530,"FR":21016,"MA":24,"A1":4,"FI":187,"FO":14,"NI":2,"NL":22955,"NO":1344,"NA":4,"NC":3,"NE":1,"NG":2,"NZ":354,"NP":2,"CI":3,"CH":7338,"CO":93,"CN":5470,"CL":74,"CA":2751,"CD":1,"CZ":2982,"CY":94,"CR":24,"CU":1,"SY":1,"KG":1,"KE":15,"SR":8,"KH":19,"KN":2,"SK":621,"KR":9629,"SI":442,"KW":62,"SN":4,"SM":2,"SL":1,"SC":2,"KZ":60,"SA":59,"SG":1977,"SE":4433,"DO":34,"DK":5076,"DE":13965,"DZ":8,"MK":52,"LB":3,"LC":2,"LA":5,"TW":11788,"TT":18,"TR":349,"LK":4,"LI":36,"LV":88,"LT":162,"LU":263,"TJ":1,"TH":513,"TC":1,"AE":171,"VE":42,"IQ":4,"IS":71,"IR":4,"AM":3,"IT":2830,"VN":271,"AN":15,"AP":2,"AR":134,"IM":20,"IL":171,"AW":1,"IN":116,"AX":3,"AZ":6,"IE":260,"ID":201,"MY":1049,"QA":8,"MZ":1}}</textarea>
-        </p>
-        <p>
-          <button id="map-build">渲染地图</button>
-        </p>
+        <form class="form-inline" ng-submit="emitBuildMap()">
+          <div class="form-group">
+            <label for="map-select">地图类型：</label>
+            <select class="form-control" name="map-select" id="map-select" ng-model="mapType" ng-change="getAreaJs()">
+              <option value="merc">merc</option>
+              <option value="mill">mill</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <label for="map-select">地区级别：</label>
+            <select class="form-control" name="map-select" id="map-select" ng-model="areaType" ng-change="getAreaJs()">
+              <option ng-repeat="(name, tree) in mapTree" value="{{name}}">{{name}}</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <label for="map-select">区域：</label>
+            <select class="form-control" name="map-select" id="map-select" ng-model="area" ng-change="getAreaJs()">
+              <option ng-repeat="item in mapTree[areaType]" value="{{item.name}}" ng-init="area = item[mapType]">{{item.name}}</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <label for="map-width">地图宽度：</label>
+            <div class="input-group">
+              <input class="form-control" name="map-width" id="map-width" ng-model="map.width" ng-change="getAreaJs()"/>
+              <div class="input-group-addon">px</div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <label for="map-height">地图高度：</label>
+            <div class="input-group">
+              <input class="form-control" name="map-height" id="map-height" ng-model="map.height" ng-change="getAreaJs()"/>
+              <div class="input-group-addon">px</div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <button id="map-build" class="btn btn-info" ng-disabled="!mapTree[areaType][area][mapType + 'Load']"><span ng-show="mapTree[areaType][area][mapType + 'Load']">渲染地图</span> <span ng-show="!mapTree[areaType][area][mapType + 'Load']">加载地图底图中</span></button>
+          </div>
+          <hr class="clearfix">
+          <div class="form-group" style="width: 100%;">
+            <label for="map-data">地图数据：</label>
+            <textarea class="form-control" name="map-data" id="map-data" ng-model="mapData" cols="30" rows="10" style="width: 100%;"></textarea>
+          </div>
+        </form>
       </div>
       <hr>
       <div>
         <p>例子数据：可以用下面的例子数据进行渲染地图。</p>
         <ul>
           <li>
-            <p>类型： cn_mill、cn_merc 地图</p>
-            <pre>{"map": {"CN-34": 586, "CN-53": 1255, "CN-50": 2090, "CN-51": 1505, "CN-31": 1176, "CN-54": 95, "CN-33": 3929, "CN-14": 1688, "CN-15": 1451, "CN-12": 396, "CN-13": 2575, "CN-11": 3921, "CN-52": 958, "CN-35": 4167, "CN-36": 927, "CN-37": 3818, "CN-44": 8536, "CN-41": 1184, "CN-43": 2367, "CN-42": 702, "CN-45": 1142, "CN-32": 3958, "CN-46": 110, "CN-65": 258, "CN-64": 96, "CN-63": 305, "CN-62": 355, "CN-61": 1552, "CN-23": 1095, "CN-22": 1834, "CN-21": 3821 } }</pre>
+            <p>能渲染的地图类型（不区分 Mercator 和 Miller 类型）： China <button class="btn btn-info" ng-click="useExampleData('countries', 'China', example.China)">使用</button></p>
+            <pre>{{example.China}}</pre>
           </li>
           <li>
-            <p>类型： world_merc、world_mill 地图</p>
-            <pre>{"map":{"BD":4,"BE":6292,"BF":1,"BG":105,"BA":23,"BB":7,"BM":10,"BN":7,"BO":5,"JP":503,"BJ":5,"JM":11,"JO":20,"BR":400,"BS":8,"JE":16,"BY":62,"RU":3393,"RW":2,"RS":52,"RE":83,"A2":1,"RO":701,"GU":7,"GT":5,"GR":189,"GP":84,"BH":4,"GG":5,"GF":24,"GE":6,"GD":1,"GB":7439,"GA":2,"SV":5,"GL":6,"GI":7,"GH":2,"OM":6,"TN":4,"HR":71,"HT":1,"HU":1949,"HK":9314,"HN":3,"AD":15,"PR":29,"PT":368,"PY":31,"PA":34,"PF":27,"PE":18,"PK":3,"PH":164,"PL":2512,"PM":3,"EE":247,"EG":2,"ZA":161,"EC":66,"AL":3,"AO":9,"SB":1,"EU":8,"ZW":1,"KY":4,"ES":3728,"ME":3,"MD":29,"MG":4,"MF":5,"UY":5,"MC":35,"UZ":4,"MM":1,"MO":285,"MN":2,"MH":2,"US":15540,"MU":11,"MT":35,"MV":2,"MQ":31,"MP":1,"AU":3357,"UG":1,"TZ":1,"UA":265,"MX":521,"AT":1530,"FR":21016,"MA":24,"A1":4,"FI":187,"FO":14,"NI":2,"NL":22955,"NO":1344,"NA":4,"NC":3,"NE":1,"NG":2,"NZ":354,"NP":2,"CI":3,"CH":7338,"CO":93,"CN":5470,"CL":74,"CA":2751,"CD":1,"CZ":2982,"CY":94,"CR":24,"CU":1,"SY":1,"KG":1,"KE":15,"SR":8,"KH":19,"KN":2,"SK":621,"KR":9629,"SI":442,"KW":62,"SN":4,"SM":2,"SL":1,"SC":2,"KZ":60,"SA":59,"SG":1977,"SE":4433,"DO":34,"DK":5076,"DE":13965,"DZ":8,"MK":52,"LB":3,"LC":2,"LA":5,"TW":11788,"TT":18,"TR":349,"LK":4,"LI":36,"LV":88,"LT":162,"LU":263,"TJ":1,"TH":513,"TC":1,"AE":171,"VE":42,"IQ":4,"IS":71,"IR":4,"AM":3,"IT":2830,"VN":271,"AN":15,"AP":2,"AR":134,"IM":20,"IL":171,"AW":1,"IN":116,"AX":3,"AZ":6,"IE":260,"ID":201,"MY":1049,"QA":8,"MZ":1}}</pre>
+            <p>能渲染的地图类型（不区分 Mercator 和 Miller 类型）： World 地区级别 <button class="btn btn-info" ng-click="useExampleData('world', 'World', example.World)">使用</button></p>
+            <pre>{{example.World}}</pre>
           </li>
         </ul>
       </div>
@@ -59,9 +92,7 @@
       <div>
         <h1>数据格式说明：</h1>
         如下：
-        <pre>{
-          map: {}
-}</pre>
+        <pre>{map: {}}</pre>
         map 字段为 map 渲染数据内容，具体国家名字城市名字参看： <a href="http://jvectormap.com/maps/world/africa/">jvectormap</a> 的说明。
       </div>
       <hr>
@@ -82,11 +113,13 @@
   <!-- script -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-load/angular-load.js"></script>
 
   <!-- map data -->
-  <script src="map_vender/jquery-jvectormap-cn-merc.js"></script>
+  <!-- <script src="map_vender/jquery-jvectormap-cn-merc.js"></script>
   <script src="map_vender/jquery-jvectormap-world-merc.js"></script>
-  <script src="map_vender/jquery-jvectormap-cn-mill.js"></script>
+  <script src="map_vender/jquery-jvectormap-cn-mill.js"></script> -->
   <script src="map_vender/jquery-jvectormap-world-mill.js"></script>
 
   <script src="js/index.js"></script>

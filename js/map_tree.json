@@ -1,0 +1,359 @@
+{
+  "world": {
+    "Asia": {
+      "name": "Asia",
+      "herf": "http://jvectormap.com/maps/world/asia/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-asia-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-asia-merc.js",
+      "millName": "asia_mill",
+      "href": "http://jvectormap.com/maps/world/asia/",
+      "mercName": "asia_merc"
+    },
+    "Continents": {
+      "name": "Continents",
+      "herf": "http://jvectormap.com/maps/world/continents/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-continents-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-continents-merc.js",
+      "href": "http://jvectormap.com/maps/world/continents/",
+      "millName": "continents_mill",
+      "mercName": "continents_merc"
+    },
+    "Europe": {
+      "name": "Europe",
+      "herf": "http://jvectormap.com/maps/world/europe/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-europe-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-europe-merc.js",
+      "mercName": "europe_merc",
+      "href": "http://jvectormap.com/maps/world/europe/",
+      "millName": "europe_mill"
+    },
+    "North America": {
+      "name": "North America",
+      "herf": "http://jvectormap.com/maps/world/north-america/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-north_america-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-north_america-merc.js",
+      "href": "http://jvectormap.com/maps/world/north-america/",
+      "mercName": "north_america_merc",
+      "millName": "north_america_mill"
+    },
+    "Oceania": {
+      "name": "Oceania",
+      "herf": "http://jvectormap.com/maps/world/oceania/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-oceania-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-oceania-merc.js",
+      "millName": "oceania_mill",
+      "href": "http://jvectormap.com/maps/world/oceania/",
+      "mercName": "oceania_merc"
+    },
+    "South America": {
+      "name": "South America",
+      "herf": "http://jvectormap.com/maps/world/south-america/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-south_america-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-south_america-merc.js",
+      "millName": "south_america_mill",
+      "href": "http://jvectormap.com/maps/world/south-america/",
+      "mercName": "south_america_merc"
+    },
+    "World": {
+      "name": "World",
+      "herf": "http://jvectormap.com/maps/world/world/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-world-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-world-merc.js",
+      "millName": "world_mill",
+      "href": "http://jvectormap.com/maps/world/world/",
+      "mercName": "world_merc"
+    }
+  },
+  "countries": {
+    "Argentina": {
+      "name": "Argentina",
+      "herf": "http://jvectormap.com/maps/countries/argentina/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-ar-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-ar-merc.js",
+      "millName": "ar_mill",
+      "mercName": "ar_merc",
+      "href": "http://jvectormap.com/maps/countries/argentina/"
+    },
+    "Australia": {
+      "name": "Australia",
+      "herf": "http://jvectormap.com/maps/countries/australia/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-au-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-au-merc.js",
+      "millName": "au_mill",
+      "href": "http://jvectormap.com/maps/countries/australia/",
+      "mercName": "au_merc"
+    },
+    "Austria": {
+      "name": "Austria",
+      "herf": "http://jvectormap.com/maps/countries/austria/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-at-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-at-merc.js",
+      "millName": "at_mill",
+      "href": "http://jvectormap.com/maps/countries/austria/",
+      "mercName": "at_merc"
+    },
+    "Belgium": {
+      "name": "Belgium",
+      "herf": "http://jvectormap.com/maps/countries/belgium/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-be-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-be-merc.js",
+      "mercName": "be_merc",
+      "href": "http://jvectormap.com/maps/countries/belgium/",
+      "millName": "be_mill"
+    },
+    "Canada": {
+      "name": "Canada",
+      "herf": "http://jvectormap.com/maps/countries/canada/",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-ca-merc.js",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-ca-mill.js",
+      "mercName": "ca_merc",
+      "href": "http://jvectormap.com/maps/countries/canada/",
+      "millName": "ca_mill"
+    },
+    "China": {
+      "name": "China",
+      "herf": "http://jvectormap.com/maps/countries/china/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-cn-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-cn-merc.js",
+      "millName": "cn_mill",
+      "href": "http://jvectormap.com/maps/countries/china/",
+      "mercName": "cn_merc"
+    },
+    "Colombia": {
+      "name": "Colombia",
+      "herf": "http://jvectormap.com/maps/countries/colombia/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-co-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-co-merc.js",
+      "mercName": "co_merc",
+      "href": "http://jvectormap.com/maps/countries/colombia/",
+      "millName": "co_mill"
+    },
+    "Denmark": {
+      "name": "Denmark",
+      "herf": "http://jvectormap.com/maps/countries/denmark/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-dk-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-dk-merc.js",
+      "millName": "dk_mill",
+      "href": "http://jvectormap.com/maps/countries/denmark/",
+      "mercName": "dk_merc"
+    },
+    "France - Departments": {
+      "name": "France - Departments",
+      "herf": "http://jvectormap.com/maps/countries/france-departments/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-fr-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-fr-merc.js",
+      "mercName": "fr_merc",
+      "href": "http://jvectormap.com/maps/countries/france-departments/",
+      "millName": "fr_mill"
+    },
+    "France - Regions (2016)": {
+      "name": "France - Regions (2016)",
+      "herf": "http://jvectormap.com/maps/countries/france-regions-2016/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-fr_regions_2016-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-fr_regions_2016-merc.js",
+      "millName": "fr_regions_2016_mill",
+      "href": "http://jvectormap.com/maps/countries/france-regions-2016/",
+      "mercName": "fr_regions_2016_merc"
+    },
+    "France - Regions": {
+      "name": "France - Regions",
+      "herf": "http://jvectormap.com/maps/countries/france-regions/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-fr_regions-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-fr_regions-merc.js",
+      "millName": "fr_regions_mill",
+      "mercName": "fr_regions_merc",
+      "href": "http://jvectormap.com/maps/countries/france-regions/"
+    },
+    "Germany": {
+      "name": "Germany",
+      "herf": "http://jvectormap.com/maps/countries/germany/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-de-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-de-merc.js",
+      "href": "http://jvectormap.com/maps/countries/germany/",
+      "millName": "de_mill",
+      "mercName": "de_merc"
+    },
+    "India": {
+      "name": "India",
+      "herf": "http://jvectormap.com/maps/countries/india/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-in-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-in-merc.js",
+      "millName": "in_mill",
+      "mercName": "in_merc",
+      "href": "http://jvectormap.com/maps/countries/india/"
+    },
+    "Italy - Provinces": {
+      "name": "Italy - Provinces",
+      "herf": "http://jvectormap.com/maps/countries/italy-provinces/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-it-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-it-merc.js",
+      "mercName": "it_merc",
+      "millName": "it_mill",
+      "href": "http://jvectormap.com/maps/countries/italy-provinces/"
+    },
+    "Italy - Regions": {
+      "name": "Italy - Regions",
+      "herf": "http://jvectormap.com/maps/countries/italy-regions/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-it_regions-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-it_regions-merc.js",
+      "mercName": "it_regions_merc",
+      "href": "http://jvectormap.com/maps/countries/italy-regions/",
+      "millName": "it_regions_mill"
+    },
+    "Netherlands": {
+      "name": "Netherlands",
+      "herf": "http://jvectormap.com/maps/countries/netherlands/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-nl-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-nl-merc.js",
+      "href": "http://jvectormap.com/maps/countries/netherlands/",
+      "mercName": "nl_merc",
+      "millName": "nl_mill"
+    },
+    "New Zealand": {
+      "name": "New Zealand",
+      "herf": "http://jvectormap.com/maps/countries/new-zealand/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-nz-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-nz-merc.js",
+      "millName": "nz_mill",
+      "href": "http://jvectormap.com/maps/countries/new-zealand/",
+      "mercName": "nz_merc"
+    },
+    "Norway": {
+      "name": "Norway",
+      "herf": "http://jvectormap.com/maps/countries/norway/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-no-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-no-merc.js",
+      "millName": "no_mill",
+      "mercName": "no_merc",
+      "href": "http://jvectormap.com/maps/countries/norway/"
+    },
+    "Poland": {
+      "name": "Poland",
+      "herf": "http://jvectormap.com/maps/countries/poland/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-pl-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-pl-merc.js",
+      "href": "http://jvectormap.com/maps/countries/poland/",
+      "mercName": "pl_merc",
+      "millName": "pl_mill"
+    },
+    "Portugal": {
+      "name": "Portugal",
+      "herf": "http://jvectormap.com/maps/countries/portugal/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-pt-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-pt-merc.js",
+      "millName": "pt_mill",
+      "href": "http://jvectormap.com/maps/countries/portugal/",
+      "mercName": "pt_merc"
+    },
+    "Russia - Federal Districts": {
+      "name": "Russia - Federal Districts",
+      "herf": "http://jvectormap.com/maps/countries/russia-fd/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-ru_fd-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-ru_fd-merc.js",
+      "mercName": "ru_fd_merc",
+      "href": "http://jvectormap.com/maps/countries/russia-fd/",
+      "millName": "ru_fd_mill"
+    },
+    "Russia": {
+      "name": "Russia",
+      "herf": "http://jvectormap.com/maps/countries/russia/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-ru-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-ru-merc.js",
+      "href": "http://jvectormap.com/maps/countries/russia/",
+      "millName": "ru_mill",
+      "mercName": "ru_merc"
+    },
+    "South Africa": {
+      "name": "South Africa",
+      "herf": "http://jvectormap.com/maps/countries/south-africa/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-za-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-za-merc.js",
+      "mercName": "za_merc",
+      "href": "http://jvectormap.com/maps/countries/south-africa/",
+      "millName": "za_mill"
+    },
+    "Spain": {
+      "name": "Spain",
+      "herf": "http://jvectormap.com/maps/countries/spain/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-es-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-es-merc.js",
+      "mercName": "es_merc",
+      "href": "http://jvectormap.com/maps/countries/spain/",
+      "millName": "es_mill"
+    },
+    "Sweden": {
+      "name": "Sweden",
+      "herf": "http://jvectormap.com/maps/countries/sweden/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-se-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-se-merc.js",
+      "mercName": "se_merc",
+      "href": "http://jvectormap.com/maps/countries/sweden/",
+      "millName": "se_mill"
+    },
+    "Switzerland": {
+      "name": "Switzerland",
+      "herf": "http://jvectormap.com/maps/countries/switzerland/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-ch-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-ch-merc.js",
+      "millName": "ch_mill",
+      "href": "http://jvectormap.com/maps/countries/switzerland/",
+      "mercName": "ch_merc"
+    },
+    "Thailand": {
+      "name": "Thailand",
+      "herf": "http://jvectormap.com/maps/countries/thailand/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-th-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-th-merc.js",
+      "millName": "th_mill",
+      "mercName": "th_merc",
+      "href": "http://jvectormap.com/maps/countries/thailand/"
+    },
+    "United Kingdom": {
+      "name": "United Kingdom",
+      "herf": "http://jvectormap.com/maps/countries/united-kingdom/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-uk_countries-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-uk_countries-merc.js",
+      "href": "http://jvectormap.com/maps/countries/united-kingdom/",
+      "mercName": "uk_countries_merc",
+      "millName": "uk_countries_mill"
+    },
+    "USA": {
+      "name": "USA",
+      "herf": "http://jvectormap.com/maps/countries/usa/",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-us-merc.js",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-us-mill.js",
+      "mercName": "us_merc",
+      "millName": "us_mill",
+      "href": "http://jvectormap.com/maps/countries/usa/"
+    },
+    "Venezuela": {
+      "name": "Venezuela",
+      "herf": "http://jvectormap.com/maps/countries/venezuela/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-ve-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-ve-merc.js",
+      "href": "http://jvectormap.com/maps/countries/venezuela/",
+      "mercName": "ve_merc",
+      "millName": "ve_mill"
+    }
+  },
+  "cities": {
+    "Chicago": {
+      "name": "Chicago",
+      "herf": "http://jvectormap.com/maps/cities/chicago/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-us-il-chicago-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-us-il-chicago-merc.js",
+      "mercName": "us-il-chicago_merc",
+      "millName": "us-il-chicago_mill",
+      "href": "http://jvectormap.com/maps/cities/chicago/"
+    },
+    "New York City": {
+      "name": "New York City",
+      "herf": "http://jvectormap.com/maps/cities/new-york/",
+      "mill": "http://jvectormap.com/js/jquery-jvectormap-us-ny-newyork-mill.js",
+      "merc": "http://jvectormap.com/js/jquery-jvectormap-us-ny-newyork-merc.js",
+      "millName": "us-ny-newyork_mill",
+      "href": "http://jvectormap.com/maps/cities/new-york/",
+      "mercName": "us-ny-newyork_merc"
+    }
+  }
+}

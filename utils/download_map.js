@@ -7,7 +7,7 @@ var queueAsync = require('queue-async');
 var request = require('request');
 
 // 文件路径处理，注意同步问题。
-var mapDownLoadFloder = '../temp/';
+var mapDownLoadFloder = '../map_vender/';
 function createFolder() {
   fs.readdir(mapDownLoadFloder, function(error, data) {
     // console.log(arguments);

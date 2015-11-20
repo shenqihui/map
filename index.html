@@ -83,7 +83,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <div class="form-group">
-            <span id="map-build" class="btn btn-info" type="button" ng-click="randomMapData()" ng-disabled="!mapTree[areaType][area]"><span ng-show="mapTree[areaType][area]">随机渲染该底图</span> <span ng-show="!mapTree[areaType][area]">先选择底图</span></span>
+            <span id="map-build" class="btn btn-info" type="button" ng-click="randomMapData()" ng-disabled="!mapTree[areaType][area][mapType + 'Load']"><span ng-show="mapTree[areaType][area][mapType + 'Load']">随机渲染该底图</span> <span ng-show="!mapTree[areaType][area][mapType + 'Load']">先选择底图</span></span>
           </div>
           <hr class="clearfix">
           <div class="form-group">

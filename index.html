@@ -22,16 +22,17 @@
       <div class="jvectormap-container" style="margin: 0 auto;border: 0; padding: 0;height: {{map.height}}px;width: {{map.width}}px">
         <link rel="stylesheet" href="http://blog.shenqh.com/map/bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.css">
         <style id="jvectormap">
-        .jvectormap-legend, .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
-          background: {{map.backgroundColor}};
-          color: {{map.color}};
-          border-color: {{map.color}};
-          border: 1px solid {{map.color}};
-          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-        }
-        .jvectormap-legend-tick {
-          height: 21px;
-        }
+          .jvectormap-legend, .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+            background: {{map.backgroundColor}};
+            color: {{map.color}};
+            border-color: {{map.color}};
+            border: 1px solid {{map.color}};
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+          }
+          .jvectormap-legend-tick {
+            height: 21px;
+          }
         </style>
         <div data-chart="map" id="map-container" style="margin: 0 auto;border: 0; padding: 0;height: {{map.height}}px;width: {{map.width}}px"></div>
       </div>
@@ -117,6 +118,9 @@
             <span id="map-dumpSvg" ng-click="dumpSvg()" class="btn btn-info">导出 SVG</span>
           </div>
           <div class="form-group">
+            <span id="map-dumpSvg" ng-click="dumpPng()" class="btn btn-info">导出 PNG</span>
+          </div>
+          <div class="form-group">
             <span id="map-dumpSvg" ng-click="dumpHtml()" class="btn btn-info">导出嵌套的 HTML</span>
           </div>
           <hr class="clearfix">
@@ -171,7 +175,7 @@
           <li>
             <i class="fa fa-square-o"></i>&nbsp;导出
             <ul>
-              <li class="fa fa-square-o">&nbsp; 导出图片</li>
+              <li class="fa fa-check-square-o">&nbsp; 导出图片</li>
               <li class="fa fa-check-square-o">&nbsp; 导出 SVG </li>
               <li class="fa fa-check-square-o">&nbsp; 导出 HTML </li>
               <li class="fa fa-square-o">&nbsp; 导出当前配置 </li>

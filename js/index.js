@@ -95,11 +95,29 @@ app.controller('map', function($scope, $http, angularLoad) {
 
   $scope.dumpSvg = function() {
     var data = svgBegin + $('.jvectormap-container [data-chart=map] svg').html() + svgEnd;
-    save($scope.area + '-' + $scope.mapType + '-svg-dom.svg', data, 'text/svg');
+    save($scope.area + '-' + $scope.mapType + '.svg', data, 'text/svg');
   };
   $scope.dumpHtml = function() {
     var data = $('.jvectormap-container')[0].outerHTML.replace('<div class="jvectormap-zoomout">−</div>', '').replace('<div class="jvectormap-zoomin">+</div>', '');
-    save($scope.area  + '-' + $scope.mapType + '-svg-dom.html', data, 'text/html');
+    save($scope.area  + '-' + $scope.mapType + '-dom.html', data, 'text/html');
+  };
+  $scope.dumpPng = function() {
+    var href = 'bower_components/html2canvas/dist/html2canvas.min.js';
+    angularLoad.loadScript(href).then(function() {
+      html2canvas($('.jvectormap-container')[0]).then(function(canvas) {
+        var image_data = atob(canvas.toDataURL().split(',')[1]);
+        var arraybuffer = new ArrayBuffer(image_data.length);
+        var view = new Uint8Array(arraybuffer);
+        var i;
+        for (i = 0; i < image_data.length; i++) {
+          view[i] = image_data.charCodeAt(i) & 0xff;
+        }
+        var data = arraybuffer;
+        save($scope.area  + '-' + $scope.mapType + '.png', data, 'application/octet-stream');
+      });
+    }).catch(function() {
+      alert(href + ' 加载失败');
+    });
   };
 
   $scope.map = {};
@@ -114,7 +132,6 @@ app.controller('map', function($scope, $http, angularLoad) {
   $scope.map.color = '#ffffff';
   $scope.map.getColor = function () {
     $scope.map.color = tinycolor($scope.map.backgroundColor).getBrightness() > 50 ? '#000000':'#ffffff';
-    // console.log('getBrightness', tinycolor($scope.map.backgroundColor).getBrightness());
     $scope.$emit('BuildMapEvent', {});
     return $scope.map.color;
   };

@@ -88,6 +88,18 @@ function save(filename, data, type) {
 }
 
 var app = angular.module('app', ['angularLoad']);
+app.directive('customOnChange', function() {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var onChangeHandler = scope.$eval(attrs.customOnChange);
+      var callback = function(event) {
+        onChangeHandler.call(element[0], event);
+      };
+      element.bind('change', callback);
+    }
+  };
+});
 app.controller('map', function($scope, $http, angularLoad) {
 
   // 例子数据
@@ -114,6 +126,42 @@ app.controller('map', function($scope, $http, angularLoad) {
       }
     }
     save($scope.area  + '-' + $scope.mapType + '-config.json', JSON.stringify(config), 'text/html');
+  };
+  $scope.inputConfig = function(event) {
+    // use as custom-on-change="inputConfig"
+    // this is input element.
+    var file = this.files[0];
+    var fr = new FileReader();
+    fr.onload = function() {
+      console.log(this, file, fr.result);
+      window.json1 = fr.result;
+      var base64Perfix = 'data:application/json;base64,';
+      if(json1.indexOf(base64Perfix) > -1) {
+        var data = atob(json1.replace(base64Perfix, ''));
+        if(data) {
+          console.log(data);
+          try{
+            data = JSON.parse(data);
+          } catch (e) {
+            alert('导入的数据非正确的配置文件');
+            return;
+          }
+          angular.extend($scope, data);
+          $scope.$apply();
+          $scope.$emit('MapJsLoadEvent', {
+            mapType: $scope.mapType,
+            areaType: $scope.areaType,
+            area: $scope.area,
+            success: function() {
+              $scope.emitBuildMap();
+            }
+          });
+        }
+      } else {
+        alert('请使用最新版 Chrome 浏览器来使用并导入');
+      }
+    };
+    fr.readAsDataURL(file);
   };
   $scope.dumpPng = function() {
     var href = 'bower_components/html2canvas/dist/html2canvas.min.js';

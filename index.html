@@ -52,6 +52,10 @@
           <div class="form-group">
             <span ng-click="dumpConfig()" class="btn btn-info">导出当前配置</span>
           </div>
+          <div class="form-group">
+            <label for="input-config">导入配置</label>
+            <input id="input-config" type="file" class="form-control btn btn-info" custom-on-change="inputConfig"/>
+          </div>
         </div>
         <hr>
         <h1>配置</h1>
@@ -174,20 +178,20 @@
           <li>
             <i class="fa fa-check-square-o"></i>&nbsp;增强配置项
             <ol>
-              <li><i class="fa fa-check-square-o"></i>宽度高度</li>
-              <li><i class="fa fa-check-square-o"></i>渲染颜色</li>
-              <li><i class="fa fa-check-square-o"></i>推荐渲染颜色</li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp;宽度高度</li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp;渲染颜色</li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp;推荐渲染颜色</li>
             </ol>
           </li>
           <li>
-            <i class="fa fa-square-o"></i>&nbsp;导出
-            <ul>
-              <li class="fa fa-check-square-o">&nbsp; 导出图片</li>
-              <li class="fa fa-check-square-o">&nbsp; 导出 SVG </li>
-              <li class="fa fa-check-square-o">&nbsp; 导出 HTML </li>
-              <li class="fa fa-square-o">&nbsp; 导出当前配置 </li>
-              <li class="fa fa-square-o">&nbsp; 导入配置 </li>
-            </ul>
+            <i class="fa fa-check-square-o"></i>&nbsp;导出
+            <ol>
+              <li><i class="fa fa-check-square-o"></i>&nbsp; 导出图片</li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp; 导出 SVG </li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp; 导出 HTML </li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp; 导出当前配置 </li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp; 导入配置 </li>
+            </ol>
           </li>
           <li><i class="fa fa-check-square-o"></i>&nbsp;Github 仓库直接存储地图底图</li>
         </ol>

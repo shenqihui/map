@@ -18,6 +18,14 @@
       <a href="https://github.com/shenqihui/map/tarball/gh-pages" class="btn btn-info">Download .tar.gz</a>
     </section>
     <section class="main-content" ng-controller="map">
+      <style>
+      .jvectormap-legend, .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+        background: {{map.backgroundColor}};
+        color: {{map.color}};
+        border-color: {{map.color}};
+        border: 1px solid {{map.color}};
+      }
+      </style>
       <h1>渲染结果</h1>
       <div data-chart="map" id="map-container" style="margin: 0 auto;height: {{map.height}}px;width: {{map.width}}px"></div>
       <hr>
@@ -49,17 +57,23 @@
           <hr class="clearfix">
           <div class="form-group">
             <label for="map-width">地图背景颜色：</label>
-            <input class="form-control" type="color" name="map-backgroundColor" id="map-backgroundColor" ng-model="map.backgroundColor"/>
+            <input class="form-control" type="color" name="map-backgroundColor" id="map-backgroundColor" ng-model="map.backgroundColor" ng-change="map.getColor()"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <label for="map-width">地图文字颜色：</label>
+            <input class="form-control" type="color" name="map-backgroundColor" id="map-backgroundColor" ng-model="map.color" readonly ng-change="emitBuildMap()"/>
+            <span class="help-block" style="display: inline;">（会跟随背景颜色自动计算）</span>
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <div class="form-group">
             <label for="map-width">地图渲染开始颜色：</label>
-            <input class="form-control" type="color" name="map-scaleBegin" id="map-scaleBegin" ng-model="map.scaleBegin"/>
+            <input class="form-control" type="color" name="map-scaleBegin" id="map-scaleBegin" ng-model="map.scaleBegin" ng-change="emitBuildMap()"/>
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <div class="form-group">
             <label for="map-width">地图渲染结束颜色：</label>
-            <input class="form-control" type="color" name="map-scaleEnd" id="map-scaleEnd" ng-model="map.scaleEnd"/>
+            <input class="form-control" type="color" name="map-scaleEnd" id="map-scaleEnd" ng-model="map.scaleEnd" ng-change="emitBuildMap()"/>
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <hr class="clearfix">
@@ -135,6 +149,7 @@
       </footer>
     </section>
   <!-- script -->
+  <script src="bower_components/tinycolor/dist/tinycolor-min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.min.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>

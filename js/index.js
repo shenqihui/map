@@ -81,15 +81,24 @@ app.controller('map', function($scope, $http, angularLoad) {
   if($scope.map.width > 600) {
     $scope.map.width = 600;
   }
-  $scope.map.height = $scope.map.width * 9 / 16;
+  $scope.map.height = parseInt($scope.map.width * 9 / 16, 10);
   $scope.map.scaleBegin = '#ffffff';
   $scope.map.scaleEnd = '#e16769';
   $scope.map.backgroundColor = '#131313';
+  $scope.map.color = '#ffffff'
+  $scope.map.getColor = function () {
+    $scope.map.color = tinycolor($scope.map.backgroundColor).getBrightness() > 50 ? '#000000':'#ffffff';
+    // console.log('getBrightness', tinycolor($scope.map.backgroundColor).getBrightness());
+    $scope.$emit('BuildMapEvent', {});
+    return $scope.map.color;
+  };
 
   $scope.$on('BuildMapEvent', function(event, option) {
     option.scaleBegin = $scope.map.scaleBegin;
     option.scaleEnd = $scope.map.scaleEnd;
     option.backgroundColor = $scope.map.backgroundColor;
+    option.mapData = $scope.mapData;
+    option.area = $scope.mapTree[$scope.areaType][$scope.area][$scope.mapType + 'Name'];
     buildMapFormat(option.mapData, option.area, option);
   });
 
@@ -118,10 +127,7 @@ app.controller('map', function($scope, $http, angularLoad) {
   // });
 
   $scope.emitBuildMap = function() {
-    $scope.$emit('BuildMapEvent', {
-      mapData: $scope.mapData,
-      area: $scope.mapTree[$scope.areaType][$scope.area][$scope.mapType + 'Name']
-    });
+    $scope.$emit('BuildMapEvent', {});
   };
 
   $scope.getAreaJs = function() {

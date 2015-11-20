@@ -101,6 +101,20 @@ app.controller('map', function($scope, $http, angularLoad) {
     var data = $('.jvectormap-container')[0].outerHTML.replace('<div class="jvectormap-zoomout">−</div>', '').replace('<div class="jvectormap-zoomin">+</div>', '');
     save($scope.area  + '-' + $scope.mapType + '-dom.html', data, 'text/html');
   };
+  $scope.dumpConfig = function() {
+    // var config = angular.copy($scope);
+    var config = {};
+    var attr;
+    for(attr in $scope) {
+      // 开发时候， scope 的可导出参数不允许是 $ 开头，而且默认对象里面，没有 function 。
+      if($scope.hasOwnProperty(attr) && !attr.startsWith('$')) {
+        if(typeof($scope[attr]) != 'function' && ['example', 'mapExampleColors', 'mapTree', ].indexOf(attr) < 0) {
+          config[attr] = angular.copy($scope[attr]);
+        }
+      }
+    }
+    save($scope.area  + '-' + $scope.mapType + '-config.json', JSON.stringify(config), 'text/html');
+  };
   $scope.dumpPng = function() {
     var href = 'bower_components/html2canvas/dist/html2canvas.min.js';
     angularLoad.loadScript(href).then(function() {
@@ -130,7 +144,7 @@ app.controller('map', function($scope, $http, angularLoad) {
   $scope.map.scaleEnd = '#e16769';
   $scope.map.backgroundColor = '#131313';
   $scope.map.color = '#ffffff';
-  $scope.map.getColor = function () {
+  $scope.mapGetColor = function () {
     $scope.map.color = tinycolor($scope.map.backgroundColor).getBrightness() > 50 ? '#000000':'#ffffff';
     $scope.$emit('BuildMapEvent', {});
     return $scope.map.color;

@@ -38,6 +38,22 @@
       </div>
       <hr>
       <div>
+        <h1>导入导出</h1>
+        <div class="form-inline">
+          <div class="form-group">
+            <span ng-click="dumpSvg()" class="btn btn-info">导出 SVG</span>
+          </div>
+          <div class="form-group">
+            <span ng-click="dumpPng()" class="btn btn-info">导出 PNG</span>
+          </div>
+          <div class="form-group">
+            <span ng-click="dumpHtml()" class="btn btn-info">导出嵌套的 HTML</span>
+          </div>
+          <div class="form-group">
+            <span ng-click="dumpConfig()" class="btn btn-info">导出当前配置</span>
+          </div>
+        </div>
+        <hr>
         <h1>配置</h1>
         <form class="form-inline" ng-submit="emitBuildMap()">
           <div class="form-group">
@@ -68,7 +84,7 @@
           <hr class="clearfix">
           <div class="form-group">
             <label for="map-width">地图背景颜色：</label>
-            <input class="form-control" type="color" name="map-backgroundColor" id="map-backgroundColor" ng-model="map.backgroundColor" ng-change="map.getColor()"/>
+            <input class="form-control" type="color" name="map-backgroundColor" id="map-backgroundColor" ng-model="map.backgroundColor" ng-change="mapGetColor()"/>
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <div class="form-group">
@@ -113,15 +129,6 @@
           </div>
           <div class="form-group">
             <button id="map-build" class="btn btn-info" ng-disabled="!mapTree[areaType][area][mapType + 'Load']"><span ng-show="mapTree[areaType][area][mapType + 'Load']">渲染地图</span> <span ng-show="!mapTree[areaType][area][mapType + 'Load']">加载地图底图中</span></button>
-          </div>
-          <div class="form-group">
-            <span id="map-dumpSvg" ng-click="dumpSvg()" class="btn btn-info">导出 SVG</span>
-          </div>
-          <div class="form-group">
-            <span id="map-dumpSvg" ng-click="dumpPng()" class="btn btn-info">导出 PNG</span>
-          </div>
-          <div class="form-group">
-            <span id="map-dumpSvg" ng-click="dumpHtml()" class="btn btn-info">导出嵌套的 HTML</span>
           </div>
           <hr class="clearfix">
           <div class="form-group" style="width: 100%;">
@@ -179,6 +186,7 @@
               <li class="fa fa-check-square-o">&nbsp; 导出 SVG </li>
               <li class="fa fa-check-square-o">&nbsp; 导出 HTML </li>
               <li class="fa fa-square-o">&nbsp; 导出当前配置 </li>
+              <li class="fa fa-square-o">&nbsp; 导入配置 </li>
             </ul>
           </li>
           <li><i class="fa fa-check-square-o"></i>&nbsp;Github 仓库直接存储地图底图</li>

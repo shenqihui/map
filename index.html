@@ -18,16 +18,23 @@
       <a href="https://github.com/shenqihui/map/tarball/gh-pages" class="btn btn-info">Download .tar.gz</a>
     </section>
     <section class="main-content" ng-controller="map">
-      <style>
-      .jvectormap-legend, .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
-        background: {{map.backgroundColor}};
-        color: {{map.color}};
-        border-color: {{map.color}};
-        border: 1px solid {{map.color}};
-      }
-      </style>
       <h1>渲染结果</h1>
-      <div data-chart="map" id="map-container" style="margin: 0 auto;height: {{map.height}}px;width: {{map.width}}px"></div>
+      <div class="jvectormap-container" style="margin: 0 auto;border: 0; padding: 0;height: {{map.height}}px;width: {{map.width}}px">
+        <link rel="stylesheet" href="http://blog.shenqh.com/map/bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.css">
+        <style id="jvectormap">
+        .jvectormap-legend, .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+          background: {{map.backgroundColor}};
+          color: {{map.color}};
+          border-color: {{map.color}};
+          border: 1px solid {{map.color}};
+          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+        .jvectormap-legend-tick {
+          height: 21px;
+        }
+        </style>
+        <div data-chart="map" id="map-container" style="margin: 0 auto;border: 0; padding: 0;height: {{map.height}}px;width: {{map.width}}px"></div>
+      </div>
       <hr>
       <div>
         <h1>配置</h1>
@@ -53,6 +60,9 @@
               <option ng-repeat="item in mapTree[areaType]" value="{{item.name}}" ng-init="area = item[mapType]">{{item.name}}</option>
             </select>
             &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="form-group">
+            <span id="map-build" class="btn btn-info" type="button" ng-click="randomMapData()" ng-disabled="!mapTree[areaType][area]"><span ng-show="mapTree[areaType][area]">随机渲染该底图</span> <span ng-show="!mapTree[areaType][area]">先选择底图</span></span>
           </div>
           <hr class="clearfix">
           <div class="form-group">
@@ -103,6 +113,12 @@
           <div class="form-group">
             <button id="map-build" class="btn btn-info" ng-disabled="!mapTree[areaType][area][mapType + 'Load']"><span ng-show="mapTree[areaType][area][mapType + 'Load']">渲染地图</span> <span ng-show="!mapTree[areaType][area][mapType + 'Load']">加载地图底图中</span></button>
           </div>
+          <div class="form-group">
+            <span id="map-dumpSvg" ng-click="dumpSvg()" class="btn btn-info">导出 SVG</span>
+          </div>
+          <div class="form-group">
+            <span id="map-dumpSvg" ng-click="dumpHtml()" class="btn btn-info">导出嵌套的 HTML</span>
+          </div>
           <hr class="clearfix">
           <div class="form-group" style="width: 100%;">
             <label for="map-data">地图数据：</label>
@@ -137,9 +153,10 @@
         <ol>
           <li><i class="fa fa-check-square-o"></i>&nbsp;</i>补充各种已有的地图</li>
           <li>
-            <i class="fa fa-square-o"></i>&nbsp;渲染例子
+            <i class="fa fa-check-square-o"></i>&nbsp;渲染例子
             <ul>
-              <li><i class="fa fa-square-o"></i>&nbsp;增加渲染例子</li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp;增加渲染例子</li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp;随机渲染例子</li>
               <li><i class="fa fa-check-square-o"></i>&nbsp;直接 Try 例子</li>
             </ul>
             </li>
@@ -151,7 +168,15 @@
               <li><i class="fa fa-check-square-o"></i>推荐渲染颜色</li>
             </ol>
           </li>
-          <li><i class="fa fa-square-o"></i>&nbsp;直接导出图片</li>
+          <li>
+            <i class="fa fa-square-o"></i>&nbsp;导出
+            <ul>
+              <li class="fa fa-square-o">&nbsp; 导出图片</li>
+              <li class="fa fa-check-square-o">&nbsp; 导出 SVG </li>
+              <li class="fa fa-check-square-o">&nbsp; 导出 HTML </li>
+              <li class="fa fa-square-o">&nbsp; 导出当前配置 </li>
+            </ul>
+          </li>
           <li><i class="fa fa-check-square-o"></i>&nbsp;Github 仓库直接存储地图底图</li>
         </ol>
       </div>

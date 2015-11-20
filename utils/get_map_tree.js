@@ -6,6 +6,7 @@ var tree = tree || {};
 var matchDownloadRegex = /<p>\s*<a href\=\"[^"]*\"\>Download<\/a>\s\(\d+\s*KB\)\s*<\/p>/igm;
 var matchARegex = /<a.*?>.*?<\/a>/igm;
 var matchMapType = /\'addMap\'\,\s*\'([^']+)\'/igm;
+var matchMapAreaTable = /<table>[\S\s]*<\/table>/igm;
 $('#sidebar>ul>li').each(function(index, li) {
   var folder = $('>a', $(this)).text().toLowerCase();
   var elem = tree[folder] = tree[folder] || {};
@@ -19,8 +20,12 @@ $('#sidebar>ul>li').each(function(index, li) {
     $.ajax({
       url: href,
       type: 'GET',
-      dataType: 'html',
+      dataType: 'text',
     }).then(function(data) {
+      arrElem.areaCode = $('table td:nth-child(2)', $(data)).map(function() {
+        return $(this).text();
+      });
+      arrElem.areaCode = arrElem.areaCode.splice(0, arrElem.areaCode.length).join(',');
       data.match(matchDownloadRegex).forEach(function(elem) {
         elem.match(matchARegex).forEach(function(elem) {
           var href = $(elem).get(0).href;

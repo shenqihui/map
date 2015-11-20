@@ -85,7 +85,7 @@ app.controller('map', function($scope, $http, angularLoad) {
   $scope.map.scaleBegin = '#ffffff';
   $scope.map.scaleEnd = '#e16769';
   $scope.map.backgroundColor = '#131313';
-  $scope.map.color = '#ffffff'
+  $scope.map.color = '#ffffff';
   $scope.map.getColor = function () {
     $scope.map.color = tinycolor($scope.map.backgroundColor).getBrightness() > 50 ? '#000000':'#ffffff';
     // console.log('getBrightness', tinycolor($scope.map.backgroundColor).getBrightness());
@@ -94,6 +94,7 @@ app.controller('map', function($scope, $http, angularLoad) {
   };
 
   $scope.$on('BuildMapEvent', function(event, option) {
+    option = option || {}
     option.scaleBegin = $scope.map.scaleBegin;
     option.scaleEnd = $scope.map.scaleEnd;
     option.backgroundColor = $scope.map.backgroundColor;
@@ -150,6 +151,18 @@ app.controller('map', function($scope, $http, angularLoad) {
         $scope.emitBuildMap();
       }
     });
+  };
+
+  $http.get('data/colors.json').success(function(data) {
+    $scope.mapExampleColors = data;
+  });
+  $scope.useExampleColor = function(colors) {
+    var colorArr = colors.split(',');
+    $scope.map.scaleBegin = colorArr[0];
+    $scope.map.scaleEnd = colorArr[1];
+    $scope.map.backgroundColor = colorArr[2];
+    $scope.map.color = colorArr[3];
+    $scope.emitBuildMap();
   };
 
   $http.get('data/map_tree.json').success(function(data) {

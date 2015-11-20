@@ -76,6 +76,13 @@
             <input class="form-control" type="color" name="map-scaleEnd" id="map-scaleEnd" ng-model="map.scaleEnd" ng-change="emitBuildMap()"/>
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
+          <div class="form-group" ng-if="mapExampleColors">
+            <label for="map-width">渲染颜色例子：</label>
+            <span ng-repeat="color in mapExampleColors">
+              <button class="btn btn-xs btn-info" ng-click="useExampleColor(color.colors)">{{color.name}}</button>&nbsp;
+            </span>
+            
+          </div>
           <hr class="clearfix">
           <div class="form-group">
             <label for="map-width">地图宽度：</label>
@@ -129,17 +136,22 @@
         <h1>Todo:</h1>
         <ol>
           <li><i class="fa fa-check-square-o"></i>&nbsp;</i>补充各种已有的地图</li>
-          <li><i class="fa fa-square-o"></i>&nbsp;增加例子</li>
           <li>
-            <i class="fa fa-spinner"></i>&nbsp;增强配置项
+            <i class="fa fa-square-o"></i>&nbsp;渲染例子
+            <ul>
+              <li><i class="fa fa-square-o"></i>&nbsp;增加渲染例子</li>
+              <li><i class="fa fa-check-square-o"></i>&nbsp;直接 Try 例子</li>
+            </ul>
+            </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>&nbsp;增强配置项
             <ol>
               <li><i class="fa fa-check-square-o"></i>宽度高度</li>
               <li><i class="fa fa-check-square-o"></i>渲染颜色</li>
-              <li><i class="fa fa-square-o"></i>推荐渲染颜色</li>
+              <li><i class="fa fa-check-square-o"></i>推荐渲染颜色</li>
             </ol>
           </li>
           <li><i class="fa fa-square-o"></i>&nbsp;直接导出图片</li>
-          <li><i class="fa fa-check-square-o"></i>&nbsp;直接 Try 例子</li>
           <li><i class="fa fa-check-square-o"></i>&nbsp;Github 仓库直接存储地图底图</li>
         </ol>
       </div>

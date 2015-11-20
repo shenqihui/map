@@ -49,24 +49,24 @@
           <hr class="clearfix">
           <div class="form-group">
             <label for="map-width">地图背景颜色：</label>
-            <input class="form-control" name="map-backgroundColor" id="map-backgroundColor" ng-model="map.backgroundColor"/>
+            <input class="form-control" type="color" name="map-backgroundColor" id="map-backgroundColor" ng-model="map.backgroundColor"/>
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <div class="form-group">
             <label for="map-width">地图渲染开始颜色：</label>
-            <input class="form-control" name="map-scaleBegin" id="map-scaleBegin" ng-model="map.scaleBegin"/>
+            <input class="form-control" type="color" name="map-scaleBegin" id="map-scaleBegin" ng-model="map.scaleBegin"/>
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <div class="form-group">
             <label for="map-width">地图渲染结束颜色：</label>
-            <input class="form-control" name="map-scaleEnd" id="map-scaleEnd" ng-model="map.scaleEnd"/>
+            <input class="form-control" type="color" name="map-scaleEnd" id="map-scaleEnd" ng-model="map.scaleEnd"/>
             &nbsp;&nbsp;&nbsp;&nbsp;
           </div>
           <hr class="clearfix">
           <div class="form-group">
             <label for="map-width">地图宽度：</label>
             <div class="input-group">
-              <input class="form-control" name="map-width" id="map-width" ng-model="map.width" ng-change="getAreaJs()"/>
+              <input class="form-control" type="number" name="map-width" id="map-width" ng-model="map.width" ng-change="getAreaJs()"/>
               <div class="input-group-addon">px</div>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -74,7 +74,7 @@
           <div class="form-group">
             <label for="map-height">地图高度：</label>
             <div class="input-group">
-              <input class="form-control" name="map-height" id="map-height" ng-model="map.height" ng-change="getAreaJs()"/>
+              <input class="form-control" type="number" name="map-height" id="map-height" ng-model="map.height" ng-change="getAreaJs()"/>
               <div class="input-group-addon">px</div>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;

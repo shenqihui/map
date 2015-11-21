@@ -196,3 +196,14 @@
 input[type="color"] {
   min-width: 5em;
 }
+
+
+.pay .btn.active:after {
+  font-family: 'Glyphicons Halflings';
+  content: "\e013";
+  color: white;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  margin-left: .5em;
+}

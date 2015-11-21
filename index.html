@@ -20,7 +20,7 @@
     <section class="main-content" ng-controller="map">
       <h1>渲染结果</h1>
       <div class="jvectormap-container" style="margin: 0 auto;border: 0; padding: 0;height: {{map.height}}px;width: {{map.width}}px">
-        <!-- <link rel="stylesheet" href="http://blog.shenqh.com/map/bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.css"> -->
+        <link rel="stylesheet" href="http://blog.shenqh.com/map/bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.css">
         <style id="jvectormap">
           .jvectormap-legend, .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
             background: {{map.backgroundColor}};
@@ -200,21 +200,20 @@
       <div class="pay">
       <!-- 赤裸裸的抄袭廖雪峰的， http://www.liaoxuefeng.com/webpage/donate#donate-weixin-10 -->
         <h1>打赏：</h1>
-        <p>如果您认为这小功能的质量不错，满足您的需求，完成了一堆领导说要画各种地图的任务，预期被领导赞赏和涨工资，不妨小额赞助我一下，让我有动力继续不断完善这个小功能。</p>
-        <p>赞助方式一共有 2 种：微信支付，支付宝支付</p>
-        <p>请闭上眼睛随意选择：</p>
         <div ng-init="pay.type='wechat';pay.account='8.88';">
-          <p>
-            通过：
+          <p>如果您认为这小功能的质量不错，满足您的需求，完成了一堆领导说要画各种地图的任务，预期被领导赞赏和涨工资，不妨小额赞助我一下，让我有动力继续不断完善这个小功能。</p>
+          <p>赞助方式一共有 2 种：微信支付，支付宝支付。</p>
+          <p>请闭上眼睛随意选择，通过：
             <span class="btn btn-success" ng-class="{'active': pay.type=='wechat'}" ng-click="pay.type='wechat'">微信</span>
             <span class="btn btn-success" ng-class="{'active': pay.type=='alipay'}" ng-click="pay.type='alipay'">支付宝</span>
             打赏我 
-            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='0.88'}" ng-click="pay.account='0.88'">0.88</span>
-            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='8.88'}" ng-click="pay.account='8.88'">8.88</span>
-            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='28.88'}" ng-click="pay.account='28.88'">28.88</span>
-            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='48.88'}" ng-click="pay.account='48.88'">48.88</span>
-            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='88.88'}" ng-click="pay.account='88.88'">88.88</span>
-            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='8n'}" ng-click="pay.account='8n'">土豪任意</span>
+            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='0.88'}" ng-click="pay.account='0.88'">￥0.88</span>
+            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='8.88'}" ng-click="pay.account='8.88'">￥8.88</span>
+            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='28.88'}" ng-click="pay.account='28.88'">￥28.88</span>
+            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='48.88'}" ng-click="pay.account='48.88'">￥48.88</span>
+            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='88.88'}" ng-click="pay.account='88.88'">￥88.88</span>
+            <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='8n'}" ng-click="pay.account='8n'">任意</span>
+            。
           </p>
           <p>扫我：<img ng-show="pay.type!='alipay'" ng-src="img/pay/{{pay.type}}-{{pay.account}}.jpg" alt="{{pay.type}}-{{pay.account}}" style="height: 260px;"> <img ng-show="pay.type=='alipay'" ng-src="img/pay/{{pay.type}}-8n.jpg" alt="{{pay.type}}-{{pay.account}}" style="height: 260px;"> <span ng-show="pay.type=='alipay'">支付宝扫码没法设定数目。</span></p>
         </div>

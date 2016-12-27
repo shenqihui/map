@@ -20,7 +20,7 @@
     <section class="main-content" ng-controller="map">
       <h1>渲染结果</h1>
       <div class="jvectormap-container" style="margin: 0 auto;border: 0; padding: 0;height: {{map.height}}px;width: {{map.width}}px">
-        <link rel="stylesheet" href="http://blog.shenqh.com/map/bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.css">
+        <link rel="stylesheet" href="bower_components/jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.css">
         <style id="jvectormap">
           .jvectormap-legend, .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
             background: {{map.backgroundColor}};
@@ -112,7 +112,7 @@
             <span ng-repeat="color in mapExampleColors">
               <button class="btn btn-xs btn-info" ng-click="useExampleColor(color.colors)">{{color.name}}</button>&nbsp;
             </span>
-            
+
           </div>
           <hr class="clearfix">
           <div class="form-group">
@@ -206,7 +206,7 @@
           <p>请闭上眼睛随意选择，通过：
             <span class="btn btn-success" ng-class="{'active': pay.type=='wechat'}" ng-click="pay.type='wechat'">微信</span>
             <span class="btn btn-success" ng-class="{'active': pay.type=='alipay'}" ng-click="pay.type='alipay'">支付宝</span>
-            打赏我 
+            打赏我
             <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='0.88'}" ng-click="pay.account='0.88'">￥0.88</span>
             <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='8.88'}" ng-click="pay.account='8.88'">￥8.88</span>
             <span class="btn btn-success" ng-show="pay.type!='alipay'" ng-class="{'active': pay.account=='28.88'}" ng-click="pay.account='28.88'">￥28.88</span>
@@ -261,7 +261,7 @@
   (function() {
     var hm = document.createElement("script");
     hm.src = "//hm.baidu.com/hm.js?a359010dd82707c1ee6d1ca5d64be33b";
-    var s = document.getElementsByTagName("script")[0]; 
+    var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
   </script>

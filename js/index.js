@@ -69,7 +69,7 @@ function buildMapFormat(mapDataStr, mapType, option) {
   buildMap(mapData, mapType, option);
 }
 
-function save(filename, data, type) {
+function save(filename, data, type, imgSrc) {
   type =  'text/html';
   data = data || '';
   filename = filename || 'output.txt';
@@ -80,11 +80,18 @@ function save(filename, data, type) {
   else{
       var elem = window.document.createElement('a');
       elem.href = window.URL.createObjectURL(blob);
-      elem.download = filename;        
+      elem.text = '下载';
+      elem.download = filename;
       document.body.appendChild(elem);
-      elem.click();        
+      elem.click();
       document.body.removeChild(elem);
   }
+  // if (imgSrc) {
+  //   var img = window.document.createElement('img');
+  //   img.src = imgSrc;
+  //   img.style.width = '100%';
+  //   document.body.appendChild(img);
+  // }
 }
 
 var app = angular.module('app', ['angularLoad']);
@@ -167,7 +174,9 @@ app.controller('map', function($scope, $http, angularLoad) {
     var href = 'bower_components/html2canvas/dist/html2canvas.min.js';
     angularLoad.loadScript(href).then(function() {
       html2canvas($('.jvectormap-container')[0]).then(function(canvas) {
-        var image_data = atob(canvas.toDataURL().split(',')[1]);
+        window.canvas = canvas;
+        let dataUrl = canvas.toDataURL();
+        var image_data = atob(dataUrl.split(',')[1]);
         var arraybuffer = new ArrayBuffer(image_data.length);
         var view = new Uint8Array(arraybuffer);
         var i;
@@ -175,7 +184,7 @@ app.controller('map', function($scope, $http, angularLoad) {
           view[i] = image_data.charCodeAt(i) & 0xff;
         }
         var data = arraybuffer;
-        save($scope.area  + '-' + $scope.mapType + '.png', data, 'application/octet-stream');
+        save($scope.area  + '-' + $scope.mapType + '.png', data, 'application/octet-stream', dataUrl);
       });
     }).catch(function() {
       alert(href + ' 加载失败');
